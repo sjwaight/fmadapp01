@@ -1,7 +1,7 @@
 apiVersion: placement.kubernetes-fleet.io/v1
 kind: ClusterResourcePlacement
 metadata:
-  namespace: fmad-demo-crp
+  name: fmad-demo-crp
 spec:
   resourceSelectors:
     - group: ""
