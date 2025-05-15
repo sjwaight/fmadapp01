@@ -48,6 +48,7 @@ env:
     src/manifests/configmap.yaml
     src/manifests/deployment.yaml
     src/manifests/service.yaml
+    fleet/pick-all-crp.yaml
   DOCKER_FILE: src/Dockerfile
   BUILD_CONTEXT_PATH: ./src
   NAMESPACE: fmad-demo
