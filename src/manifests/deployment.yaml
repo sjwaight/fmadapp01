@@ -35,25 +35,25 @@ spec:
             - secretRef:
                 name: secret-ref
                 optional: true
-          # livenessProbe:
-          #   tcpSocket:
-          #     port: 8000
-          # readinessProbe:
-          #   tcpSocket:
-          #     port: 8000
-          #   periodSeconds: 5
-          #   timeoutSeconds: 5
-          #   failureThreshold: 1
-          #   successThreshold: 1
-          #   initialDelaySeconds: 3
-          # startupProbe:
-          #   tcpSocket:
-          #     port: 8000
-          #   periodSeconds: 10
-          #   timeoutSeconds: 1
-          #   failureThreshold: 3
-          #   successThreshold: 1
-          #   initialDelaySeconds: 0
+          livenessProbe:
+            tcpSocket:
+              port: 8000
+          readinessProbe:
+            tcpSocket:
+              port: 8000
+            periodSeconds: 5
+            timeoutSeconds: 5
+            failureThreshold: 1
+            successThreshold: 1
+            initialDelaySeconds: 3
+          startupProbe:
+            tcpSocket:
+              port: 8000
+            periodSeconds: 10
+            timeoutSeconds: 1
+            failureThreshold: 3
+            successThreshold: 1
+            initialDelaySeconds: 0
           securityContext:
             seccompProfile:
               type: RuntimeDefault
@@ -75,19 +75,19 @@ spec:
                 - SYS_CHROOT
                 - SETFCAP
                 - SYS_PTRACE
-      # affinity:
-      #   podAntiAffinity:
-      #     preferredDuringSchedulingIgnoredDuringExecution:
-      #     - weight: 100
-      #       podAffinityTerm:
-      #         topologyKey: kubernetes.io/hostname
-      #         labelSelector:
-      #           matchLabels:
-      #             app.kubernetes.io/name: fm-ad-app-01
-      # topologySpreadConstraints:
-      #   - maxSkew: 1
-      #     topologyKey: kubernetes.io/hostname
-      #     whenUnsatisfiable: ScheduleAnyway
-      #     labelSelector:
-      #       matchLabels:
-      #         app.kubernetes.io/name: fm-ad-app-01
+      affinity:
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - weight: 100
+            podAffinityTerm:
+              topologyKey: kubernetes.io/hostname
+              labelSelector:
+                matchLabels:
+                  app.kubernetes.io/name: fm-ad-app-01
+      topologySpreadConstraints:
+        - maxSkew: 1
+          topologyKey: kubernetes.io/hostname
+          whenUnsatisfiable: ScheduleAnyway
+          labelSelector:
+            matchLabels:
+              app.kubernetes.io/name: fm-ad-app-01
